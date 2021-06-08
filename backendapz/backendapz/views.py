@@ -1,3 +1,4 @@
+import json
 from rest_framework.response import Response
 from forestry.models import Animal, Feeder, Vaccination
 from forestry.serializers import AnimalSerializer, FeederSerializer, VaccinationSerializer
@@ -15,5 +16,5 @@ class FeederListView(APIView):
 class AnimalsListView(APIView):
     def get(self, request):
         animals = Animal.objects.filter()
-        serializer = ForestrySerializer(animals, many=True)
+        serializer = AnimalSerializer(animals, many=True)
         return Response(serializer.data)
