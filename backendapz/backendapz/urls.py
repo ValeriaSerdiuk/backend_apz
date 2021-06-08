@@ -2,26 +2,14 @@ from rest_framework.authtoken import views
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
-
-from forestry.views import ForestryViewSet, AnimalViewSet, FeederViewSet, VaccinationViewSet
-
-from backendapz.views import index
-
-router = SimpleRouter()
-
-router.register(r'forestry', ForestryViewSet)
-router.register(r'animal', AnimalViewSet)
-router.register(r'feeder', FeederViewSet)
-router.register(r'vaccination', VaccinationViewSet)
+from . import views
 
 urlpatterns = [
+    path("feeders/", views.FeederListView.as_view()),
+    path("animals/", views.AnimalsListView.as_view()),
     path('admin/', admin.site.urls),
-    path('checkserver/', index, name='index'),
-    path('auth/', include('accounts.urls')),
-    path('api/', include('api.urls', namespace='api')),
-    path('api-token-auth/', views.obtain_auth_token, name='api-token-auth'),
-    path('db/v1', include('forestry.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
+    path('auth/', include('djoser.urls.jwt')),
 ]
-
-urlpatterns += router.urls
-

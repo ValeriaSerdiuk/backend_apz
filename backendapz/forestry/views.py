@@ -7,15 +7,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
 
 from . import models
-from .models import Forestry, Animal, Feeder, Vaccination
-from .serializers import ForestrySerializer, AnimalSerializer, FeederSerializer, VaccinationSerializer
-
-
-class ForestryViewSet(ModelViewSet):
-    queryset = Forestry.objects.all()
-    serializer_class = ForestrySerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
-    permission_classes = [IsAuthenticated]
+from .models import Animal, Feeder, Vaccination
+from .serializers import AnimalSerializer, FeederSerializer, VaccinationSerializer
 
 
 class AnimalViewSet(ModelViewSet):

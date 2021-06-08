@@ -1,12 +1,6 @@
 from rest_framework import serializers
 
-from .models import Forestry, Animal, Feeder, Vaccination
-
-
-class ForestrySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Forestry
-        fields = '__all__'
+from .models import Animal, Feeder, Vaccination
 
 
 class AnimalSerializer(serializers.ModelSerializer):
