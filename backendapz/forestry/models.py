@@ -8,7 +8,7 @@ from accounts import models as user_models
 
 
 class Feeder(models.Model):
-    id = models.UUIDField(_('id'), primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField('id', primary_key=True, default=uuid.uuid4, editable=False)
     PREDATOR = 'PR'
     HERBIVORE = 'HB'
     TYPE_CHOICES = (
@@ -22,15 +22,15 @@ class Feeder(models.Model):
 
 
 class Animal(models.Model):
-    id = models.UUIDField(_('id'), primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(_('name'), max_length=100)
-    vaccinated = models.BooleanField(_('vaccinated'))
+    id = models.UUIDField('id', primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField('name', max_length=100)
+    vaccinated = models.BooleanField('vaccinated')
 
 
 class Vaccination(models.Model):
-    id = models.UUIDField(_('id'), primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField('id', primary_key=True, default=uuid.uuid4, editable=False)
     animal = models.ForeignKey('Animal', on_delete=models.CASCADE)
-    created = models.DateTimeField(_('created'), auto_now_add=True)
+    created = models.DateTimeField('created', auto_now_add=True)
 
     class Meta:
         ordering = ['-created']

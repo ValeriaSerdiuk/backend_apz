@@ -1,9 +1,7 @@
-import json
 from rest_framework.response import Response
 from forestry.models import Animal, Feeder, Vaccination
 from forestry.serializers import AnimalSerializer, FeederSerializer, VaccinationSerializer
 from rest_framework.views import APIView
-from rest_framework.viewsets import ModelViewSet
 
 
 class FeederListView(APIView):
